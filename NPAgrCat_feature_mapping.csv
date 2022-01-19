@@ -23,3 +23,6 @@ Gender,Gender
 "Number,Person,Role",Person
 "Number,Person,Role",Role
 none,none
+"Gender,Number,Person",Gender
+"Gender,Number,Person",Number
+"Gender,Number,Person",Person
