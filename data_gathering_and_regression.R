@@ -1,14 +1,13 @@
 ---
-title: "SI"
+  title: "SI"
 output:
   pdf_document: default
-  html_document: default
+html_document: default
 ---
-
-# Supplementary Materials
-
-## Packages
-```{r}
+  
+  # Supplementary Materials
+  
+  ## Packages
 library(brms)
 library(dplyr)
 library(tidyverse)
@@ -28,15 +27,12 @@ library(ggpubr)
 library(plotrix)
 library(testthat)
 library(cmdstanr)
-```
-
 
 ## Data
-The data for the languages of the Ancient Near East sample were collected through grammar mining. The oldest language in the sample is Sumerian, with written attestation starting at around 3200 BCE, followed by Ancient Egyptian closely thereafter. The youngest languages in the sample are Epigraphic South Arabian and Arabic, ending around 800 AD. The sample contains 35 distinct language varieties. These 35 language varieties either represent a whole language, a distinct local dialect of a language, or a distinct diachronic period of a language. All together, the 35 distinct varieties come from 17 languages: Sumerian, Elamite, Hurrian (isolates); Egyptian, Coptic (Afro-Asiatic); Akkadian, Eblaite (East Semitic); Amorite, Ugaritic, Phoenician, Hebrew, Aramaic (Northwest Semitic); Ancient North Arabian, Epigraphic South Arabian, Arabic (Central Semitic); Luwian, Hittite (Indo-European). 
+#The data for the languages of the Ancient Near East sample were collected through grammar mining. The oldest language in the sample is Sumerian, with written attestation starting at around 3200 BCE, followed by Ancient Egyptian closely thereafter. The youngest languages in the sample are Epigraphic South Arabian and Arabic, ending around 800 AD. The sample contains 35 distinct language varieties. These 35 language varieties either represent a whole language, a distinct local dialect of a language, or a distinct diachronic period of a language. All together, the 35 distinct varieties come from 17 languages: Sumerian, Elamite, Hurrian (isolates); Egyptian, Coptic (Afro-Asiatic); Akkadian, Eblaite (East Semitic); Amorite, Ugaritic, Phoenician, Hebrew, Aramaic (Northwest Semitic); Ancient North Arabian, Epigraphic South Arabian, Arabic (Central Semitic); Luwian, Hittite (Indo-European). 
 
-Import data for the Ancient Near East
+##Import data for the Ancient Near East
 
-```{r}
 #load Ancient Near East data
 anea<- read.csv("anea.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 semitic<- read.csv("Semitic.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
@@ -46,19 +42,13 @@ semitic[semitic == "Amharic"] <- "AmharicS"
 semitic[semitic == "Egyptian Arabic"] <- "Egyptian ArabicS"
 semitic[semitic == "Modern Hebrew"] <- "Modern HebrewS"
 
-```
-
-### Feature and Language Selection
-
-The selection of linguistic features is data driven and guided by the motivation to achieve as much descriptive comparability between the languages in our samples. For this reason, the features that are used in our analysis are well established morphological features that have been described and collected for a vast number of the world's languages in two large databases: WALS (Dryer and Haspelmath 2013) and AUTOTYP (Bickel et al. 2017). All relevant morphological features from both databases were selected. Duplicate features that appear in both databases (even if coded differently) were taken out. The final set of features contains 51 features (appendix 1). We then recoded nine of the features that contained a ‘mixed’/’both’ category, ending up with a set of 77 morphological features. 
-The reasoning for recoding the ‘mixed’ category is that in the categorical regression analysis, where we estimate the slope, categories are assumed to be in equal distance from each other. This is clearly not the case with a ‘mixed’ or ‘no dominant order’ category, which simply means that more than one of the other categories are present in the language. The distance between category A and category B is not the same as the distance between category A and category A&B. Adapting the WALS data transformations set-up by Bickel and Zakharko (2018) [link](https://github.com/IVS-UZH/WALS-recodings), we transformed the features containing a ‘mixed’ category into ‘category A presence’ where the values are TRUE/FALSE, and  ‘category B presence’ where the values are TRUE/FALSE. The languages that had ‘mixed’/’both’ as their value now have a TRUE value for both category A and category B. This systematic recoding can only be done with features that have only two categories, otherwise we cannot know from the data which of the categories contributed to the ‘mixed’ status of the language. For example, Kutenai has the value ‘no dominant order’ for the feature ‘Word Order SOV’. In such a case we are unable to reconstruct from the available information which of the six possible word orders are present in the language. For those features with more than two options containing the ‘mixed’ category, we excluded the ‘mixed’ from the analysis, and where possible filled out the missing data with more data collection. For the AUTOTYP feature that was recoded, the data contained which of the categories contributed to the ‘mixed’ category, so there we were able to retain all information. This feature was recoded by hand because of inconsistencies in the coding.
 
 
 ### Worldwide Language Sample Selection 
 
-A sample of 100 languages representing the worldwide distribution was also assembled. The languages of the worldwide distribution are the 100 languages with the least amount of missing data. The sample was checked to make sure of balanced areal and family distributions. The data for these languages was downloaded from WALS and Autotyp and accessed through the lingtypology R package (Moroz 2017).
+#A sample of 100 languages representing the worldwide distribution was also assembled. The languages of the worldwide distribution are the 100 languages with the least amount of missing data. The sample was checked to make sure of balanced areal and family distributions. The data for these languages was downloaded from WALS and Autotyp and accessed through the lingtypology R package (Moroz 2017).
 
-```{r}
+
 #get data for worldwide sample
 
 #get AUTOTYP data
@@ -107,32 +97,28 @@ reference.data.order <- reference.data  %>% arrange(desc(feature.sum)) #order by
 top.100 <- reference.data.order[1:100,] #keep top 100 languages with the most data
 lang.samp <- top.100 %>% arrange(language)
 lang.samp <- select(lang.samp, -feature.sum, -max_features)
-lang.samp$area <- 0
+lang.samp$area <- "universal"
 lang.samp <- relocate(lang.samp, area, .after = family)
 lang.samp<- as.data.frame(lang.samp)
-```
 
-Combine Ancient Near East Data with worldwide data
-```{r}
-combined_data<- rbind(anea, lang.samp)
+
+#Combine Ancient Near East Data with worldwide data
+combined_data<- rbind(anea, lang.samp, semitic)
 combined_data[combined_data == ""] <- NA
-```
 
 
 ### Feature Recoding
 
-
-```{r}
 ###recode WALS features with 'mixed' category
 #rename data to match names in recoding-patterns
 wals_source_data<- combined_data
 colnames(wals_source_data)[7:50]<- c("52A Comitatives and Instrumentals", "63A Noun Phrase Conjunction", "64A Nominal and Verbal Conjunction", "37A Definite Articles", "38A Indefinite Articles", "101A Expression of Pronominal Subjects", "46A Indefinite Pronouns", "43A Third Person Pronouns and Demonstratives", "41A Distance Contrasts in Demonstratives",
-"42A Pronominal and Adnominal Demonstratives", "47A Intensifiers and Reflexive Pronouns", "44A Gender Distinctions in Independent Personal Pronouns", "32A Systems of Gender Assignment", "30A Number of Genders", 
-"112A Negative Morphemes", "33A Coding of Nominal Plurality", "53A Ordinal Numerals", "54A Distributive Numerals", "87A Order of Adjective and Noun", "85A Order of Adposition and Noun Phrase", "91A Order of Degree Word and Adjective",
-"88A Order of Demonstrative and Noun", "86A Order of Genitive and Noun", "143A Order of Negative Morpheme and Verb", "89A Order of Numeral and Noun", "84A Order of Object Oblique and Verb", 
-"90A Order of Relative Clause and Noun", "107A Passive Constructions", "106A Reciprocal Constructions", "73A The Optative", "71A The Prohibitive", "70A The Morphological Imperative", "48A Person Marking on Adpositions",
-"93A Position of Interrogative Phrases in Content Questions", "92A Position of Polar Question Particles", "59A Possessive Classification", "57A Position of Pronominal Possessive Affixes", "24A Locus of Marking in Possessive Noun Phrases",
-"27A Reduplication", "67A The Future Tense", "66A The Past Tense", "65A Perfective/Imperfective Aspect", "102A Verbal Person Marking", "81A Order of Subject Object and Verb")
+                                     "42A Pronominal and Adnominal Demonstratives", "47A Intensifiers and Reflexive Pronouns", "44A Gender Distinctions in Independent Personal Pronouns", "32A Systems of Gender Assignment", "30A Number of Genders", 
+                                     "112A Negative Morphemes", "33A Coding of Nominal Plurality", "53A Ordinal Numerals", "54A Distributive Numerals", "87A Order of Adjective and Noun", "85A Order of Adposition and Noun Phrase", "91A Order of Degree Word and Adjective",
+                                     "88A Order of Demonstrative and Noun", "86A Order of Genitive and Noun", "143A Order of Negative Morpheme and Verb", "89A Order of Numeral and Noun", "84A Order of Object Oblique and Verb", 
+                                     "90A Order of Relative Clause and Noun", "107A Passive Constructions", "106A Reciprocal Constructions", "73A The Optative", "71A The Prohibitive", "70A The Morphological Imperative", "48A Person Marking on Adpositions",
+                                     "93A Position of Interrogative Phrases in Content Questions", "92A Position of Polar Question Particles", "59A Possessive Classification", "57A Position of Pronominal Possessive Affixes", "24A Locus of Marking in Possessive Noun Phrases",
+                                     "27A Reduplication", "67A The Future Tense", "66A The Past Tense", "65A Perfective/Imperfective Aspect", "102A Verbal Person Marking", "81A Order of Subject Object and Verb")
 
 #clean up data
 expect_false(any(duplicated(wals_source_data)))
@@ -268,7 +254,7 @@ NPMarking_recoded <- select(np_structure, language, NPMarking) %>%
   # pivot feature values to columns
   mutate(value = TRUE) %>%
   pivot_wider(names_from = Feature, values_fill = FALSE)
-
+NPMarking_recoded<- select(NPMarking_recoded, -"NA")
 
 # recode the NPAgrCat variable
 NPAgrCat_recoded <- select(np_structure, language, NPAgrCat) %>%
@@ -285,6 +271,7 @@ NPAgrCat_recoded <- select(np_structure, language, NPAgrCat) %>%
   # pivot feature values to columns
   mutate(value = TRUE) %>%
   pivot_wider(names_from = Feature, values_fill = FALSE)
+NPAgrCat_recoded<- select(NPAgrCat_recoded, -"NA")
 
 # combime both recoded features
 autotyp_recoded <- full_join(NPMarking_recoded, NPAgrCat_recoded, by=c(language="language"))
@@ -299,11 +286,9 @@ autotyp_recoded %>% select(language, glottocode, family, area, latitude, longitu
 
 recoded_data<- merge(wals_recoded, autotyp_recoded, by= c("language", "glottocode", "family", "area", "longitude", "latitude"))
 #write.csv(recoded_data, file = "recoded.anea.uni.not.clean.csv")
-```
 
 
 ## Data import and clean up
-```{r}
 #clean up data from special characters so it can pass through the regression function
 data<-recoded_data
 data <- data %>% mutate_at(vars(Reciprocal.Presence:VInflCatandAgrFmtvMax.binned3), list(~ stringr::str_replace_all(., ",", "")))
@@ -320,14 +305,12 @@ data <- data %>% mutate_at(vars(Reciprocal.Presence:VInflCatandAgrFmtvMax.binned
 data <- data %>% mutate_at(vars(Reciprocal.Presence:VInflCatandAgrFmtvMax.binned3), list(~ stringr::str_replace_all(., "≠", "x")))
 
 #change feature names to short names
-colnames(data) <- c("language", "glottocode","family", "area", "longitude", "latitude", "Rec.P", "RecRef.I", "RecRef.D", "ContQInitial",	"ContQNonInitial", "NumNoun", "NounNum", "DegWAdj",	"AdjDegW", "GenN",	"NGen", "AdjN",	"NAdj",	"PossAff.P",	"PossPre",	"PossSuff",	"ComInst",	"NPconj",	"NVconj",	"DefArt",	"IndefArt",	"PronomS",	"IndefPron",	"PronDem",	"DemDis",	"PronAdnDem",	"IntRef",	"GenPron",	"Gender",	"Gender.n",	"NegMorph",	"NPlural",	"OrdNum",	"DistNum", "AdpN",	"DemN",	"NegV",	"OXV",	"RelN",	"Passive",	"Optative",	"Prohibitive",	"Imperative",	"AdpPM",	"PolarQ",	"PossClass",	"PossLocus",	"Reduplication",	"Future",	"Past",	"Aspect",	"Vper",	"SOV",	"Head.driven.agr",	"Construct.state",	"Juxtaposition",	"Governed",	"Mod.headed.poss.agr",	"Linker",	"Incorporation",	"Dep.driven.agr",	"Pronominal.agr",	"Anti.const.state.agr",	"Mod.governed.adp", "External.driven.agr",	"External.Poss",	"Bare.noun",	"Nominalizer",	"Agr.Number",	"Agr.Gender",	"Agr.Case",	"Agr.State",	"Agr.none",	"Agr.Role",	"NPHeadlessness",	"ClausePosition",	"NumClass.n",	"Alignment", "VInflCat")
+colnames(data) <- c("language", "glottocode","family", "area", "longitude", "latitude", "Rec.P", "RecRef.I", "RecRef.D", "ContQInitial",	"ContQNonInitial", "NumNoun", "NounNum", "DegWAdj",	"AdjDegW", "GenN",	"NGen", "AdjN",	"NAdj",	"PossAff.P",	"PossPre",	"PossSuff",	"ComInst",	"NPconj",	"NVconj",	"DefArt",	"IndefArt",	"PronomS",	"IndefPron",	"PronDem",	"DemDis",	"PronAdnDem",	"IntRef",	"GenPron",	"Gender",	"Gender.n",	"NegMorph",	"NPlural",	"OrdNum",	"DistNum", "AdpN",	"DemN",	"NegV",	"OXV",	"RelN",	"Passive",	"Optative",	"Prohibitive",	"Imperative",	"AdpPM",	"PolarQ",	"PossClass",	"PossLocus",	"Reduplication",	"Future",	"Past",	"Aspect",	"Vper",	"SOV",	"Head.driven.agr",	"Construct.state",	"Juxtaposition",	"Governed",	"Mod.headed.poss.agr",	"Linker",	"Incorporation",	"Dep.driven.agr",	"Pronominal.agr",	"Anti.const.state.agr",	"Mod.governed.adp", "External.driven.agr",	"External.Poss",	"Bare.noun",	"Nominalizer",	"Agr.Number",	"Agr.Gender",	"Agr.Case",	"Agr.State", "Agr.none",	"Agr.Person",	"Agr.Role",	"NPHeadlessness",	"ClausePosition",	"NumClass.n",	"Alignment", "VInflCat")
 
 #write.csv(data, file = "recoded.anea.semitic.uni.clean.csv")
-```
+
 
 ## Separate back into three datasets, and create the dataset for the Regression
-
-```{r}
 anea<- data %>% filter (area %in% "anea")
 semitic<- data %>% filter (area %in% "semitic")
 universal<- data %>% filter (area %in% "universal")
@@ -337,22 +320,22 @@ semitic[semitic == "AmharicS"] <- "Amharic"
 semitic[semitic == "Egyptian ArabicS"] <- "Egyptian Arabic"
 semitic[semitic == "Modern HebrewS"] <- "Modern Hebrew"
 
+#write.csv(anea, file = "recoded.anea.clean.csv")
+#write.csv(semitic, file = "recoded.semitic.clean.csv")
+#write.csv(universal, file = "recoded.universal.clean.csv")
+
 # create dataset for regression analysis
 data<- rbind(anea, universal)
+#write.csv(data, file = "regression.data.csv")
 
-```
+### Regressionn Analysis ###
+#We use logistic and categorical regression for the binary and multi-level variables respectively to quantify the extent to which the area (within the Ancient Near East versus outside the Ancient Near East) influences the odds of each value of the morphological features. 
+#While the frequentist framework only allows for the rejection of a null effect, it cannot quantify the evidence for a null effect. Because we are interested both in the evidence for the influence of area on morphology as well as the absence of influence of area on morphology, we fit the regression models in a Bayesian framework. The models estimate the probability distributions of the effects of the area on morphology. In order to do so, we used the R package brms (Bürkner 2018). 
+#We used a normal distribution prior. For the group-level (“random”) effects we use a student_t (3,0,2.5) prior.  
 
+#data<- read.csv("recoded.anea.uni.clean.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
-### Analysis
-
-### Regression
-
-We use logistic and categorical regression for the binary and multi-level variables respectively to quantify the extent to which the area (within the Ancient Near East versus outside the Ancient Near East) influences the odds of each value of the morphological features. 
-
-While the frequentist framework only allows for the rejection of a null effect, it cannot quantify the evidence for a null effect. Because we are interested both in the evidence for the influence of area on morphology as well as the absence of influence of area on morphology, we fit the regression models in a Bayesian framework. The models estimate the probability distributions of the effects of the area on morphology. In order to do so, we used the R package brms (Bürkner 2018). We used a normal distribution prior. For the group-level (“random”) effects we use a student_t (3,0,2.5) prior.  
-
-```{r}
-variables <- colnames(data)[7:85]
+variables <- colnames(data)[7:86]
 results.list <- list()
 ex.prior <- c(prior_string("normal(0,1)", class="b"))
 
@@ -365,21 +348,20 @@ for(u in 1:length(variables)){
   fit <- brm(
     formula= brmsformula,
     family= categorical(link="logit"),
-    prior= ex.prior, #we use an uninformative prior because then we are closer to frequentist 
+    prior= ex.prior, 
     data= data,
     iter = 5000,
-    cores=8,
+    cores=4,
     control = list(adapt_delta = 0.9999999))
   results.list[[u]] <- fit
 }
 
-saveRDS(results.list, 'regression_results_with_prior.rds')
-```
+saveRDS(results.list, 'regression_results_prior_1.rds')
 
 
-The results are reported in the log odds - when the area coefficient is centered around 0 it indicates no influence of the area on the morphology (null-effect). When the area coefficient is positive, that means that the variable in question is more likely in the Ancient Near East than elsewhere, and when it is negative, the variable is more rare in the Ancient Near East compared to the universal distribution. Therefore, the density curves show how probable each value is for each morphological feature in the Ancient Near East compared to the universal distribution.  
+#The results are reported in the log odds - when the area coefficient is centered around 0 it indicates no influence of the area on the morphology (null-effect). When the area coefficient is positive, that means that the variable in question is more likely in the Ancient Near East than elsewhere, and when it is negative, the variable is more rare in the Ancient Near East compared to the universal distribution. Therefore, the density curves show how probable each value is for each morphological feature in the Ancient Near East compared to the universal distribution.  
 
-```{r}
+
 ##plot
 
 #We have for all but the baseline category an area coefficient in the model. 
@@ -399,16 +381,13 @@ The results are reported in the log odds - when the area coefficient is centered
 #the code collects all the posterior draws from the area coefficient,
 #i.e. indirectly quantifying the probability to observe the associated 
 #feature in the area. The coefficient column says which variable and category it is.
-data<- read.csv("recoded.anea.uni.not.clean.csv")
-results<- readRDS("regression_results_with_prior.rds")
+data<- read.csv("regression.data.csv")
+results<- readRDS("regression_results_prior_1.rds")
 results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
 data <-  as.data.frame(data)
-#data <- data %>% mutate(Alignment = case_when(Alignment == "S=Atr=P" ~ "SAtrP",
-#                                              Alignment == "S=Atr≠P" ~ "SAtrP1",
-#                                              Alignment == "S=P≠Atr" ~ "SPAtr",
-#                                              TRUE ~ Alignment))
-for(u in 7:85){ #loop through all the columns with variables analyzed
+
+for(u in 7:86){ #loop through all the columns with variables analyzed
   print(u)
   fit <- results[[u -6]] #choose the corresponding fitted model in the results list
   categories <-gsub(' ','', sort(unique(data[,u]))[-1]) #determine the categories of a variable,
@@ -420,7 +399,7 @@ for(u in 7:85){ #loop through all the columns with variables analyzed
     #i.e. "b_mu..._areanea"
     draw <- mcmc_samples$dpars[[paste('mu', k, sep = '')]][["fe"]]$b[,coef_name] #get the associated area coefficient samples
     area_draws <- rbind(area_draws, data.frame(post_draw = draw, coefficient = paste(colnames(data)[u], k))) #append on the draws vector
-    }
+  }
 }
 
 
@@ -452,13 +431,14 @@ regression_plot <- ggplot(area_draws_order,aes(y=coefficient)) +
   stat_interval(aes(x = post_draw), point_interval = median_hdi, 
                 .width = c(0.5, .90), size=0.8) + 
   scale_color_brewer(name="Credible Interval", palette = 1) +
-  geom_vline(xintercept = 0) + theme_bw() + 
-  xlab("Posterior") +
-  theme(plot.title = element_text(size = 10,face = "bold"),
-        axis.text=element_text(size=3),
-        axis.title.y=element_blank(),
-        axis.title=element_text(size=10,face="bold"),
-        legend.text = element_text(size = 10),
+  labs(y= "Feature states ordered by mean regression coefficient", x= "Posterior")+
+  theme(plot.title = element_text(size = 80,face = "bold"),
+        axis.text=element_text(size=2),
+        #axis.title.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.text.y=element_blank(),
+        #axis.title=element_text(size=10,face="bold"),
+        legend.text = element_text(size = 8),
         legend.key.width = unit(3, "line"),
         legend.position = "bottom",
         panel.grid.minor = element_blank(),
@@ -466,30 +446,22 @@ regression_plot <- ggplot(area_draws_order,aes(y=coefficient)) +
         legend.title = element_blank())
 
 ggsave("anea_regression.pdf",
-  plot = regression_plot,
-  width = 15,
-  height = 20,
-  dpi = 300,
-  units = "cm")
+       plot = regression_plot,
+       width = 15,
+       height = 20,
+       dpi = 300,
+       units = "cm")
 
-```
 
 ### sBayes
-sBayes (Ranacher et al., 2021) is a software for finding contact areas in space based on linguistic features. Contact areas comprise of geographically proximate languages, which are linguistically similar and whose similarity cannot be explained by the confounding effects of either universal preference or inheritance. 
-Through a Markov Chain Monte Carlo (MCMC) approach sBayes samples from the posterior distribution of a model. In the warm-up phase, multiple independent chains explore the parameter space in parallel. After the warm-up phase, sBayes moves to the chain with the highest likelihood where it starts sampling from the posterior.
-
-The analysis consists of four steps:
-
-1. Data coding and preparing the features file
-2. Defining the priors
-3. Setting up and running the MCMC
-4. Summarizing and visualizing the posterior sample
+#sBayes (Ranacher et al., 2021) is a software for finding contact areas in space based on linguistic features. Contact areas comprise of geographically proximate languages, which are linguistically similar and whose similarity cannot be explained by the confounding effects of either universal preference or inheritance. 
+#Through a Markov Chain Monte Carlo (MCMC) approach sBayes samples from the posterior distribution of a model. In the warm-up phase, multiple independent chains explore the parameter space in parallel. After the warm-up phase, sBayes moves to the chain with the highest likelihood where it starts sampling from the posterior.
 
 
 #### Data coding
-sBayes requires as input a matrix of discrete independent categorical features in the format of a CSV file. For inheritance sBayes takes a non-hierarchical family relation where each unique entry is considered a family. Languages with the same entry are treated as belonging to the same family. If the family column for a language is left empty, inheritance is not modeled for this language. For our model we chose the Major-Branch level of relatedness as the family. We chose that because a division according to Family or Stock would be too broad for our data, having most of the languages in the Ancient Near East sample belonging to the Semitic Stock.
+#sBayes requires as input a matrix of discrete independent categorical features in the format of a CSV file. For inheritance sBayes takes a non-hierarchical family relation where each unique entry is considered a family. Languages with the same entry are treated as belonging to the same family. If the family column for a language is left empty, inheritance is not modeled for this language. For our model we chose the Major-Branch level of relatedness as the family. We chose that because a division according to Family or Stock would be too broad for our data, having most of the languages in the Ancient Near East sample belonging to the Semitic Stock.
 
-```{r}
+
 ##sBayes requires a specific data format
 #create anea data set for sbayes
 colnames(anea)[which(colnames(anea) == 'glottocode')] <- 'id'
@@ -520,15 +492,3 @@ Suniversal<- relocate(universal, id)
 Suniversal<- select(anea, -area)
 Suniversal[Suniversal == "NA"] <- ""
 write.csv(Suniversal, file = "Suniversal.csv")
-
-```
-
-The universal preference, inheritance and contact parameters require a prior distribution. sBayes models them with a Dirichlet distribution:  
-
-$P(αf) =Dir(ψi= 1 +μi·ρ)fori∈1,... k$
-
-$\mu_{i}$ is the prior probability of state $i$ and defines the mean of the prior distribution. $\rho$ gives the precision or inverse variance. $\psi_{i}$ can be thought of as pseudocounts for state $i$. A large precision yields large pseudocounts and a strong prior. When $\rho = 0$, $\psi_i = 1$  for all $i$ and the prior is uniform. The mean $\mu_i$ can be derived empirically, i.e. from data. We inform the universal prior distribution with the 100-language sample described above. The data informing the family distribution for the Semitic language family was accessed in the same way and was supplemented with data collection from grammars for languages/branches that were not represented in the databases to insure a more balanced sample. The prior for contact is not informed by data. As the areas are what we are trying to find, we do not know before seeing the data where the contact areas are or which features languages share in these areas. Thus, the prior for contact, i.e the preference in each area is uniform. 
-
-We set the precision $\rho_i$ for the universal prior distribution low ($\rho = 10$) to capture the uncertainty about the universal distribution. Setting a weak universal prior also insures we are not stacking the deck in favor of assigning similarities in the data to contact (with a strong universal prior we can explain less variation by universal preference, hence making more probable the contact explanation). 
-We set the precision $\rho_i$ for the family prior distribution low as well ($\rho = 7$) for the same reasons. Even though in our data the Semitic family is divided into three branches (East-Semitic, Northwest Semitic, and Central Semitic), they are all informed by the family prior distribution for the larger Semitic family.  
-
