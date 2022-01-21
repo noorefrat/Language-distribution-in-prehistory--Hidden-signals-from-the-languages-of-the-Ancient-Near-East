@@ -97,10 +97,10 @@ reference.data.order <- reference.data  %>% arrange(desc(feature.sum)) #order by
 top.100 <- reference.data.order[1:100,] #keep top 100 languages with the most data
 lang.samp <- top.100 %>% arrange(language)
 lang.samp <- select(lang.samp, -feature.sum, -max_features)
-lang.samp$area <- "universal"
+lang.samp$area <- 0
 lang.samp <- relocate(lang.samp, area, .after = family)
 lang.samp<- as.data.frame(lang.samp)
-
+#write.csv(lang.samp, file = "lang.samp.csv")
 
 #Combine Ancient Near East Data with worldwide data
 combined_data<- rbind(anea, lang.samp, semitic)
@@ -305,7 +305,7 @@ data <- data %>% mutate_at(vars(Reciprocal.Presence:VInflCatandAgrFmtvMax.binned
 data <- data %>% mutate_at(vars(Reciprocal.Presence:VInflCatandAgrFmtvMax.binned3), list(~ stringr::str_replace_all(., "≠", "x")))
 
 #change feature names to short names
-colnames(data) <- c("language", "glottocode","family", "area", "longitude", "latitude", "Rec.P", "RecRef.I", "RecRef.D", "ContQInitial",	"ContQNonInitial", "NumNoun", "NounNum", "DegWAdj",	"AdjDegW", "GenN",	"NGen", "AdjN",	"NAdj",	"PossAff.P",	"PossPre",	"PossSuff",	"ComInst",	"NPconj",	"NVconj",	"DefArt",	"IndefArt",	"PronomS",	"IndefPron",	"PronDem",	"DemDis",	"PronAdnDem",	"IntRef",	"GenPron",	"Gender",	"Gender.n",	"NegMorph",	"NPlural",	"OrdNum",	"DistNum", "AdpN",	"DemN",	"NegV",	"OXV",	"RelN",	"Passive",	"Optative",	"Prohibitive",	"Imperative",	"AdpPM",	"PolarQ",	"PossClass",	"PossLocus",	"Reduplication",	"Future",	"Past",	"Aspect",	"Vper",	"SOV",	"Head.driven.agr",	"Construct.state",	"Juxtaposition",	"Governed",	"Mod.headed.poss.agr",	"Linker",	"Incorporation",	"Dep.driven.agr",	"Pronominal.agr",	"Anti.const.state.agr",	"Mod.governed.adp", "External.driven.agr",	"External.Poss",	"Bare.noun",	"Nominalizer",	"Agr.Number",	"Agr.Gender",	"Agr.Case",	"Agr.State", "Agr.none",	"Agr.Person",	"Agr.Role",	"NPHeadlessness",	"ClausePosition",	"NumClass.n",	"Alignment", "VInflCat")
+colnames(data) <- c("language", "glottocode","family", "area", "longitude", "latitude", "Rec.P", "RecRef.I", "RecRef.D", "ContQInitial",	"ContQNonInitial", "NumNoun", "NounNum", "DegWAdj",	"AdjDegW", "GenN",	"NGen", "AdjN",	"NAdj",	"PossAff.P",	"PossPre",	"PossSuff",	"ComInst",	"NPconj",	"NVconj",	"DefArt",	"IndefArt",	"PronomS",	"IndefPron",	"PronDem",	"DemDis",	"PronAdnDem",	"IntRef",	"GenPron",	"Gender",	"Gender.n",	"NegMorph",	"NPlural",	"OrdNum",	"DistNum", "AdpN",	"DemN",	"NegV",	"OXV",	"RelN",	"Passive",	"Optative",	"Prohibitive",	"Imperative",	"AdpPM",	"PolarQ",	"PossClass",	"PossLocus",	"Reduplication",	"Future",	"Past",	"Aspect",	"Vper",	"SOV",	"Head.driven.agr",	"Construct.state",	"Juxtaposition",	"Governed",	"Mod.headed.poss.agr",	"Linker",	"Incorporation",	"Dep.driven.agr",	"Pronominal.agr",	"Anti.const.state.agr",	"Mod.governed.adp", "External.driven.agr",	"External.Poss",	"Bare.noun",	"Nominalizer",	"Agr.Number",	"Agr.Gender",	"Agr.Case","Agr.Def",	"Agr.State", "Agr.none",	"Agr.Person",	"Agr.Role",	"NPHeadlessness",	"ClausePosition",	"NumClass.n",	"Alignment", "VInflCat")
 
 #write.csv(data, file = "recoded.anea.semitic.uni.clean.csv")
 
@@ -313,7 +313,7 @@ colnames(data) <- c("language", "glottocode","family", "area", "longitude", "lat
 ## Separate back into three datasets, and create the dataset for the Regression
 anea<- data %>% filter (area %in% "anea")
 semitic<- data %>% filter (area %in% "semitic")
-universal<- data %>% filter (area %in% "universal")
+universal<- data %>% filter (area %in% 0)
 
 #change names of duplicate languages back in the Semitic dataset
 semitic[semitic == "AmharicS"] <- "Amharic"
@@ -333,9 +333,9 @@ data<- rbind(anea, universal)
 #While the frequentist framework only allows for the rejection of a null effect, it cannot quantify the evidence for a null effect. Because we are interested both in the evidence for the influence of area on morphology as well as the absence of influence of area on morphology, we fit the regression models in a Bayesian framework. The models estimate the probability distributions of the effects of the area on morphology. In order to do so, we used the R package brms (Bürkner 2018). 
 #We used a normal distribution prior. For the group-level (“random”) effects we use a student_t (3,0,2.5) prior.  
 
-#data<- read.csv("recoded.anea.uni.clean.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
+#data<- read.csv("processed_data/regression.data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
-variables <- colnames(data)[7:86]
+variables <- colnames(data)[7:87]
 results.list <- list()
 ex.prior <- c(prior_string("normal(0,1)", class="b"))
 
@@ -387,7 +387,7 @@ results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
 data <-  as.data.frame(data)
 
-for(u in 7:86){ #loop through all the columns with variables analyzed
+for(u in 7:87){ #loop through all the columns with variables analyzed
   print(u)
   fit <- results[[u -6]] #choose the corresponding fitted model in the results list
   categories <-gsub(' ','', sort(unique(data[,u]))[-1]) #determine the categories of a variable,
@@ -431,6 +431,7 @@ regression_plot <- ggplot(area_draws_order,aes(y=coefficient)) +
   stat_interval(aes(x = post_draw), point_interval = median_hdi, 
                 .width = c(0.5, .90), size=0.8) + 
   scale_color_brewer(name="Credible Interval", palette = 1) +
+  geom_vline(xintercept = 0) + theme_bw() +
   labs(y= "Feature states ordered by mean regression coefficient", x= "Posterior")+
   theme(plot.title = element_text(size = 80,face = "bold"),
         axis.text=element_text(size=2),
@@ -451,7 +452,6 @@ ggsave("anea_regression.pdf",
        height = 20,
        dpi = 300,
        units = "cm")
-
 
 ### sBayes
 #sBayes (Ranacher et al., 2021) is a software for finding contact areas in space based on linguistic features. Contact areas comprise of geographically proximate languages, which are linguistically similar and whose similarity cannot be explained by the confounding effects of either universal preference or inheritance. 
