@@ -20,7 +20,7 @@ wals.df <- read.csv('~/Downloads/wals-2020.2/cldf/values.csv') %>%
 
 ##############################################################
 #read anea data
-anea<- read.csv("data/raw/anea_diss.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n")) #import anea dataset
+anea<- read.csv("anea_diss.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n")) #import anea dataset
 
 ##############################################################
 #load projection for maps
