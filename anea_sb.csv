@@ -1,0 +1,36 @@
+﻿Language,Glottocode,area,Latitude,Longitude,NPlural,NegMorph,VInfCat,PronAdDem
+Old Akkadian,akka1240,anea,33.1,44.1,suffix,particle,4,Identical
+Old Assyrian,akka1240,anea,35.88,40.95,suffix,particle,5,Identical
+Middle Assyrian,akka1240,anea,36.21,41.15,suffix,particle,5,Identical
+Neo-Assyrian,akka1240,anea,36.31,41.05,suffix,particle,4,Identical
+Old Babylonian,akka1240,anea,32.61,44.61,suffix,particle,4,Identical
+Middle Babylonian,akka1240,anea,32.75,44.51,suffix,particle,4,Identical
+Neo-Babylonian,akka1240,anea,32.5,44.87,suffix,particle,4,Identical
+Eblaite,ebla1238,anea,35.8,36.8,suffix,particle,4,Identical
+Dumaitic North Arabian,duma1255,anea,29.8,39.89,suffix,particle,3,NA
+Hasaitic North Arabian,hasa1249,anea,25.79,49.27,suffix,particle,3,NA
+Arabic,arab1395,anea,29.63,33.12,suffix,particle,4,Identical
+Old Aramaic,olda1246,anea,32.84,37,suffix,particle,4,NA
+Samal,sama1317,anea,37.1,36.67,suffix,particle,4,NA
+Imperial Aramaic,impe1235,anea,33.91,42.19,suffix,particle,4,NA
+Middle Aramaic,midd1366,anea,32.28,35.2,suffix,particle,4,NA
+Jewish Palestinian Aramaic,pale1261,anea,32.28,35.2,suffix,particle,4,Different stem
+Jewish Babylonian Aramaic,jewi1240,anea,32.27,44.24,suffix,particle,4,Identical
+Syriac,clas1252,anea,37.11,42.14,suffix,particle,4,Identical
+Mandaic Aramaic,clas1253,anea,36.12,49.57,suffix,particle,4,Identical
+Earlier Egyptian,egyp1246,anea,28.38,30.83,suffix,particle,6,Identical
+Middle Egyptian,egyp1246,anea,28.41,30.93,suffix,particle,4,Identical
+Later Egyptian,copt1239,anea,29.47,31.21,suffix,particle,6,Identical
+Coptic,copt1239,anea,29.4,31,plural word,particle,4,Different stem
+Hittite,hitt1242,anea,40,35,suffix,particle,6,Identical
+Luwian,luvi1235,anea,38,36,suffix,particle,5,NA
+Phoenician,phoe1239,anea,34.12,35.65,suffix,particle,5,Identical
+Ugaritic,ugar1238,anea,35.6,35.78,suffix,NA,6,Identical
+Ancient South Arabian,sayh1236,anea,15.42,45.35,stem change,particle,4,NA
+Old Elamite,elam1244,anea,31.18,48.23,suffix,word,4,Identical
+Achaemenid Elamite,elam1244,anea,31.18,48.23,suffix,particle,4,Identical
+Standard Biblical Hebrew,bibl1238,anea,31.78,35.17,suffix,particle,5,Identical
+Mishnaic Hebrew,hebr1246,anea,31.78,35.17,suffix,particle,4,Identical
+Amorite,amor1239,anea,34.71,40.72,stem change,NA,4,NA
+Hurrian,hurr1240,anea,40.73,43.32,prefix,affix,11,NA
+Sumerian,sume1241,anea,31.3,45.67,clitic,word or affix,16,Different stem
