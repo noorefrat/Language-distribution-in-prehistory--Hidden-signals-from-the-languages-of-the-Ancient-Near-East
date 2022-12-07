@@ -6,9 +6,6 @@ library(forcats)
 library(wesanderson)
 library(RColorBrewer)
 
-#anea<- read.csv("data/processed/recoded.anea.uni.clean.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
-#semitic <- anea %>% filter(family %in% c('Northwest Semitic', 'West Semitic','Central Semitic'))
-
 semitic<-read.csv("Semitic_ordered.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
 # make long format
@@ -46,10 +43,11 @@ state_counts <- sem %>%
 
 # color <- rep(c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"), 14)
 # color<- c("#B8C4F9", "#354279", "#6D86F7", "#595E78", "#566BC4", "#5261FF") #blues
-# color<- c("#F5D925", "#E2B36B", "#D5CE5A", "#F5CB25", "#D6D36B", "#F4E85F") #yellows
+#color<- c("#F5D925", "#E2B36B", "#D5CE5A", "#F5CB25", "#D6D36B", "#F4E85F") #yellows
+color<- c("#F1BE6C", "#DF9065", "#F17C6C", "#FFFF80", "#BE5F1B", "#DF8B46") #desert
 
 # color <- c("#00798c", "#cc5566", "#edae49", "#66a182", "#2e4057", "#8d96a3", "#992299") 
-color <- c("#49a0b7", "#ffc411", "#cc5566",       "#306580", "#dd7009", "#999999")
+#color <- c("#49a0b7", "#ffc411", "#cc5566", "#306580", "#dd7009", "#999999")
 
 # Collect unique state names for each feature
 states <- sem %>% 
@@ -75,11 +73,11 @@ sm <- ggplot() +
   ) +
   scale_fill_manual(values=long_color, na.value = "white") +
   labs(x = "Languages ordered by time", y = "Feature") +
-  geom_text(data=matches, mapping = aes(x=27.5, y=feature, label=round(proportion_differ, 2), hjust="inward"), size=1.5) +
-  geom_text(mapping=aes(label="Feature disagreement", x=27.5, y=53, hjust="inward", vjust="inward"), size=1.45)
+  geom_text(data=matches, mapping = aes(x=27.5, y=feature, label=round(proportion_match, 2), hjust="inward"), size=1.5) +
+  geom_text(mapping=aes(label="Feature agreement", x=27.5, y=53, hjust="inward", vjust="inward"), size=1.45)
 
-print(paste("Mean disagreement:", mean(matches$proportion_differ), sep=" "))
-print(paste("Standard deviation:", var(matches$proportion_differ)**0.5, sep=" "))
+print(paste("Mean agreement:", mean(matches$proportion_match), sep=" "))
+print(paste("Standard deviation:", var(matches$proportion_match)**0.5, sep=" "))
 
 ggsave("sem.pdf", sm, width = 15, height = 10, units = c("cm"), dpi = 400)
 
