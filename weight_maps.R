@@ -142,9 +142,10 @@ map_s_data <- diss_s_data %>% pivot_longer(6:ncol(diss_s_data), names_to = "feat
 ##############################################################
 #PLOT
 #color pallette
-cl <- c("#E69F00", "#56B4E9", "#009E73", "#CC79A7", "#9561e2", "#6574cd", "#4dc0b5", "#ffed4a", "#f6993f")
 
 ##############################################################
+cl <- c( "#56B4E9", "#8fbc8f","#009E73", "#9561e2", "#990000", "#4dc0b5", "#ffed4a", "#f6993f", "#2e2d88", "#990000")
+
 nplural<- map_s_data %>% filter(feature %in% c("NPlural")) 
 gg.npl <- project_data(df = nplural)
 
@@ -153,21 +154,21 @@ npl <- gg.npl$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
   scale_color_manual(na.translate=FALSE, values = cl, name = NULL
   ) +
   theme(panel.grid = element_blank(), legend.direction = "horizontal", legend.position = "bottom", legend.text = element_text(size = 8), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5),
-        plot.margin = margin(0,5,0,0.1, "cm")) +
+        plot.margin = margin(0,6,0,0.1, "cm")) +
   labs(title = "Noun Plural")+
   guides(color= guide_legend(keywidth = 0.2, keyheight = 0.5, override.aes = list(size = 4)),
          shape = "none")
 
 
 ############inset###############
-clr <- c("#E69F00", "#56B4E9", "#CC79A7", "#9561e2", "#4dc0b5", "#ffed4a", "#f6993f")
+clr <- c( "#56B4E9", "#8fbc8f","#009E73", "#9561e2", "#ffed4a", "#f6993f","#4dc0b5","#990000", "#2e2d88", "#990000")
 
 gg.npl.inset <- project_data(df = nplural,
-                             xmin = 20,
+                             xmin = 15,
                              xmax = 60,
                              ymin = 25,
                              ymax = 50)
@@ -178,7 +179,7 @@ npl.inset<- gg.npl.inset$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
   scale_color_manual(na.translate=FALSE, values = clr, name = NULL
   ) +
   theme(panel.grid = element_blank(), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5), panel.border = element_rect(colour = "gray", fill=NA, size=1)
@@ -187,13 +188,14 @@ npl.inset<- gg.npl.inset$base_plot +
 
 mapnpl<- ggdraw() +
   draw_plot(npl) +
-  draw_plot(npl.inset, x = 0.65, y = 0.35, width = 0.35, height = 0.35)
+  draw_plot(npl.inset, x = 0.62, y = 0.35, width = 0.39, height = 0.45)
 
 
 ggsave("mapnpl.pdf", width = 17, height = 10, units = c("cm"), dpi = 600)
 
 
 ##############################################################
+cln <- c("#E69F00", "#ffed4a", "#56B4E9",  "#990000", "#009E73", "#6574cd")
 neg<- map_s_data %>% filter(feature %in% c("NegMorph")) 
 gg.neg <- project_data(df = neg)
 
@@ -202,19 +204,20 @@ negm <- gg.neg$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
-  scale_color_manual(na.translate=FALSE, values = cl, name = NULL
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
+  scale_color_manual(na.translate=FALSE, values = cln, name = NULL
   ) +
   theme(panel.grid = element_blank(), legend.direction = "horizontal", legend.position = "bottom", legend.text = element_text(size = 8), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5),
-        plot.margin = margin(0,5,0,0, "cm")) +
+        plot.margin = margin(0,6,0,0, "cm")) +
   labs(title = "Negative Morpheme")+
   guides(color= guide_legend(keywidth = 0.2, keyheight = 0.5, override.aes = list(size = 4)),
          shape = "none")
 
 ############inset###############
-cle <- c( "#56B4E9", "#009E73", "#CC79A7", "#9561e2", "#6574cd")
+cle <- c("#E69F00", "#ffed4a",  "#990000", "#009E73", "#6574cd")
+
 gg.negm.inset <- project_data(df = neg,
-                             xmin = 20,
+                             xmin = 15,
                              xmax = 60,
                              ymin = 25,
                              ymax = 50)
@@ -225,7 +228,7 @@ negm.inset<- gg.negm.inset$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
   scale_color_manual(na.translate=FALSE, values = cle, name = NULL
   ) +
   theme(panel.grid = element_blank(), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5), panel.border = element_rect(colour = "gray", fill=NA, size=1)
@@ -234,8 +237,7 @@ negm.inset<- gg.negm.inset$base_plot +
 
 mapneg<- ggdraw() +
   draw_plot(negm) +
-  draw_plot(negm.inset, x = 0.65, y = 0.35, width = 0.35, height = 0.35)
-
+  draw_plot(negm.inset, x = 0.62, y = 0.35, width = 0.39, height = 0.45)
 
 ggsave("mapneg.pdf", width = 17, height = 10, units = c("cm"), dpi = 600)
 
@@ -251,16 +253,16 @@ inf<- gg.inf$base_plot +
   scale_colour_gradient2(breaks = c(0,6,16), labels = c("0", "median", "16"),
                          midpoint = median(gg.inf$data$value),
                          low = 'blue', mid = 'gray', high = 'red', name = NULL) + 
-  scale_shape_manual(values=c(17, 16), name= NULL) +
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
   theme(panel.grid = element_blank(), legend.direction = "horizontal", legend.position = "bottom", legend.text = element_text(size = 10, family= "serif"), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5),
-        plot.margin = margin(0,5,0,0, "cm")) +
+        plot.margin = margin(0,6,0,0, "cm")) +
     labs(title = "Inflectional Categories")+
-  guides(color= guide_colorbar(barwidth = 4, barheight = 0.6, override.aes = list(size = 1), order = 1),
+  guides(color= guide_colorbar(barwidth = 4, barheight = 0.6, override.aes = list(size = 1), order = 1, ),
          shape = "none")
 
 ############inset###############
 gg.inf.inset <- project_data(df = vinfcat,
-                              xmin = 20,
+                              xmin = 15,
                               xmax = 60,
                               ymin = 25,
                               ymax = 50)
@@ -271,7 +273,7 @@ inf.inset <- gg.inf.inset$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
   scale_colour_gradient2(breaks = c(0,6,16), labels = c("0", "median", "16"),
                          midpoint = median(gg.inf$data$value),
                          low = 'blue', mid = 'grey' , high = 'red', name = NULL) +
@@ -281,7 +283,7 @@ inf.inset <- gg.inf.inset$base_plot +
 
 mapinf<- ggdraw() +
   draw_plot(inf) +
-  draw_plot(inf.inset, x = 0.65, y = 0.35, width = 0.35, height = 0.35)
+  draw_plot(inf.inset, x = 0.62, y = 0.35, width = 0.39, height = 0.45)
 
 
 ggsave("mapinf.pdf", width = 17, height = 10, units = c("cm"), dpi = 600)
@@ -290,23 +292,24 @@ ggsave("mapinf.pdf", width = 17, height = 10, units = c("cm"), dpi = 600)
 pro<- map_s_data %>% filter(feature %in% c("PronAdDem")) 
 gg.pro <- project_data(df = pro)
 
+cld <- c("#56B4E9", "#009E73", "#E69F00")
 prodem <- gg.pro$base_plot +
   geom_sf(data = gg.pro$data, aes(color = value, shape= area),
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
-  scale_color_manual(na.translate=FALSE, values = cl, name = NULL
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
+  scale_color_manual(na.translate=FALSE, values = cld, name = NULL
   ) +
   theme(panel.grid = element_blank(), legend.direction = "horizontal", legend.position = "bottom", legend.text = element_text(size = 8), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5),
-        plot.margin = margin(0,5,0,0, "cm")) +
+        plot.margin = margin(0,6,0,0, "cm")) +
   labs(title = "Pronominal and Adnominal Demonstratives")+
   guides(color= guide_legend(keywidth = 0.2, keyheight = 0.5, override.aes = list(size = 4)),
          shape = "none")
 
 ############inset###############
 gg.prodem.inset <- project_data(df = pro,
-                              xmin = 20,
+                              xmin = 15,
                               xmax = 60,
                               ymin = 25,
                               ymax = 50)
@@ -317,8 +320,8 @@ prodem.inset<- gg.prodem.inset$base_plot +
           alpha = .5,
           size = 1
   ) +
-  scale_shape_manual(values=c(17, 16), name= NULL) +
-  scale_color_manual(na.translate=FALSE, values = cl, name = NULL
+  scale_shape_manual(values=c(17, 8, 16), name= NULL) +
+  scale_color_manual(na.translate=FALSE, values = cld, name = NULL
   ) +
   theme(panel.grid = element_blank(), plot.title = element_text(family = "Helvetica", face = "bold", size = (8), hjust = 0.5), panel.border = element_rect(colour = "gray", fill=NA, size=1)
   ) +
@@ -326,7 +329,7 @@ prodem.inset<- gg.prodem.inset$base_plot +
 
 mapprodem<- ggdraw() +
   draw_plot(prodem) +
-  draw_plot(prodem.inset, x = 0.65, y = 0.35, width = 0.35, height = 0.35)
+  draw_plot(prodem.inset, x = 0.62, y = 0.35, width = 0.39, height = 0.45)
 
 
 ggsave("mapprodem.pdf", width = 17, height = 10, units = c("cm"), dpi = 600)
