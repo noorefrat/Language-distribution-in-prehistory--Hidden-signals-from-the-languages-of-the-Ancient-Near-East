@@ -30,9 +30,9 @@ library(cmdstanr)
 
 ## Data
 #The data for the languages of the Ancient Near East sample were collected through grammar mining. The oldest language in the sample is Sumerian, with written attestation starting at around 3200 BCE, followed by Ancient Egyptian closely thereafter. The youngest languages in the sample are Epigraphic South Arabian and Arabic, ending around 800 AD. The sample contains 35 distinct language varieties. These 35 language varieties either represent a whole language, a distinct local dialect of a language, or a distinct diachronic period of a language. All together, the 35 distinct varieties come from 17 languages: Sumerian, Elamite, Hurrian (isolates); Egyptian, Coptic (Afro-Asiatic); Akkadian, Eblaite (East Semitic); Amorite, Ugaritic, Phoenician, Hebrew, Aramaic (Northwest Semitic); Ancient North Arabian, Epigraphic South Arabian, Arabic (Central Semitic); Luwian, Hittite (Indo-European). 
+#In case you want to skip this step and run the analysis, you can skip to line 330 and upload the file created in this code instead by uncommenting line 335.
 
 ##Import data for the Ancient Near East
-
 #load Ancient Near East data
 anea<- read.csv("anea.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 semitic<- read.csv("Semitic.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
@@ -43,14 +43,10 @@ semitic[semitic == "Egyptian Arabic"] <- "Egyptian ArabicS"
 semitic[semitic == "Modern Hebrew"] <- "Modern HebrewS"
 
 
-
 ### Worldwide Language Sample Selection 
-
 #A sample of 100 languages representing the worldwide distribution was also assembled. The languages of the worldwide distribution are the 100 languages with the least amount of missing data. The sample was checked to make sure of balanced areal and family distributions. The data for these languages was downloaded from WALS and Autotyp and accessed through the lingtypology R package version 1.1.7 (Moroz 2017).
 
-
 #get data for worldwide sample
-
 #get AUTOTYP data
 #The data is taken from AUTOTYP version 0.1.2
 autotyp <- autotyp.feature(c("NP_structure","Clause_linkage", "Numeral_classifiers", "Alignment_per_language", "Synthesis")) 
@@ -328,6 +324,8 @@ semitic[semitic == "Modern HebrewS"] <- "Modern Hebrew"
 # create dataset for regression analysis
 data<- rbind(anea, universal)
 #write.csv(data, file = "regression.data.csv")
+
+
 
 ### Regressionn Analysis ###
 #We use logistic and categorical regression for the binary and multi-level variables respectively to quantify the extent to which the area (within the Ancient Near East versus outside the Ancient Near East) influences the odds of each value of the morphological features. 
