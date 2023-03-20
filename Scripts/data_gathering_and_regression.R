@@ -46,12 +46,13 @@ semitic[semitic == "Modern Hebrew"] <- "Modern HebrewS"
 
 ### Worldwide Language Sample Selection 
 
-#A sample of 100 languages representing the worldwide distribution was also assembled. The languages of the worldwide distribution are the 100 languages with the least amount of missing data. The sample was checked to make sure of balanced areal and family distributions. The data for these languages was downloaded from WALS and Autotyp and accessed through the lingtypology R package (Moroz 2017).
+#A sample of 100 languages representing the worldwide distribution was also assembled. The languages of the worldwide distribution are the 100 languages with the least amount of missing data. The sample was checked to make sure of balanced areal and family distributions. The data for these languages was downloaded from WALS and Autotyp and accessed through the lingtypology R package version 1.1.7 (Moroz 2017).
 
 
 #get data for worldwide sample
 
 #get AUTOTYP data
+#The data is taken from AUTOTYP version 0.1.2
 autotyp <- autotyp.feature(c("NP_structure","Clause_linkage", "Numeral_classifiers", "Alignment_per_language", "Synthesis")) 
 autotyp<- select(autotyp, Glottocode, NPMarking, NPAgrCat, NPHeadlessness, ClausePosition, NumClass.n, AlignmentCaseDominantSAP, VInflCatandAgrFmtvMax.binned3)
 colnames(autotyp)[which(colnames(autotyp) == 'Glottocode')] <- 'glottocode'
