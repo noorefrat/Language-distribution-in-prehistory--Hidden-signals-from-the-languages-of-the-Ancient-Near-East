@@ -46,7 +46,7 @@ universal<- read.csv("data/universal_data.csv", encoding="UTF-8", na.strings=c("
 
 # create dataset for regression analysis
 regression_data<- rbind(anea, universal)
-#write.csv(data, file = "regression_data.csv")
+#write.csv(regression_data, file = "regression_data.csv")
 #regression_data<- read.csv("data/regression_data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
 variables <- colnames(regression_data)[7:86]
@@ -90,7 +90,7 @@ data <-  as.data.frame(regression_data)
 for(u in 7:86){ #loop through all the columns with variables analyzed
   print(u)
   fit <- results[[u -6]] #choose the corresponding fitted model in the results list
-  categories <-gsub(' ','', sort(unique(data[,u]))[-1]) #determine the categories of a variable,
+  categories <-gsub(' ','', sort(unique(regression_data[,u]))[-1]) #determine the categories of a variable,
   categories <- gsub ('-', '', categories)
   #take all but the first (alphabetically ordered).
   mcmc_samples <- prepare_predictions(fit) #unpack brms stuff, get the posterior draws
@@ -98,7 +98,7 @@ for(u in 7:86){ #loop through all the columns with variables analyzed
     coef_name <- paste('b_mu', k, '_areaanea', sep = '') #here you get the name of the cartegory + brms syntax
     #i.e. "b_mu..._areanea"
     draw <- mcmc_samples$dpars[[paste('mu', k, sep = '')]][["fe"]]$b[,coef_name] #get the associated area coefficient samples
-    area_draws <- rbind(area_draws, data.frame(post_draw = draw, coefficient = paste(colnames(data)[u], k))) #append on the draws vector
+    area_draws <- rbind(area_draws, data.frame(post_draw = draw, coefficient = paste(colnames(regression_data)[u], k))) #append on the draws vector
   }
 }
 
