@@ -46,6 +46,7 @@ universal<- read.csv("data/universal_data.csv", encoding="UTF-8", na.strings=c("
 
 # create dataset for regression analysis
 regression_data<- rbind(anea, universal)
+regression_data$area <- factor(regression_data$area, levels = c("universal", "anea")) 
 #write.csv(regression_data, file = "regression_data.csv")
 #regression_data<- read.csv("data/regression_data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
@@ -85,7 +86,7 @@ for(u in 1:length(variables)){
 #results<- readRDS("data/regression_results.rds")
 results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
-data <-  as.data.frame(regression_data)
+regression_data <-  as.data.frame(regression_data)
 
 for(u in 7:86){ #loop through all the columns with variables analyzed
   print(u)
