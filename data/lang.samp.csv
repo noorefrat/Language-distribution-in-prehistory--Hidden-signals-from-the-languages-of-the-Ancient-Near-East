@@ -1,0 +1,101 @@
+"","language","glottocode","family","area","latitude","longitude","Reduplication","Optative","NPStructureAgreementCategory","NPStructureMarkingAssignmentType","NPStructureHeadlessness","ClausePosition","NumeralClassifiersCount","DominantAlignment2ForCase","VerbInflectionMaxCategoryCount"
+"1","Abkhaz","abkh1244","Abkhazian-Ubykh",0,43.0833333333,41,"Productive full and partial reduplication","Inflectional optative present",NA,NA,NA,NA,0,"S=Atr=P",16
+"2","Alamblak","alam1246","Sepik Hill",0,-4.66666666667,143.333333333,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,"flexible-relational",0,"S=Atr=P",NA
+"3","Alutor","alut1245","Chukotkan",0,61,165,NA,"Inflectional optative absent","Number","agreement/class marker",NA,NA,NA,"S=P≠Atr",NA
+"4","Amele","amel1241","Croisilles",0,-5.25,145.583333333,"Productive full and partial reduplication","Inflectional optative absent",NA,"government",NA,"fixed:pre-main",0,"S=Atr=P",NA
+"5","Amur Nivkh","gily1242",NA,0,53.3333333333,142,"Full reduplication only","Inflectional optative absent",NA,"construct state",NA,NA,30,"S=Atr=P",8
+"6","Apurinã","apur1254","Apurina-Piro-Iñapari",0,-9,-67,"No productive reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,NA,7
+"7","Bagirmi","bagi1246",NA,0,11.6666666667,16,"Full reduplication only","Inflectional optative absent",NA,"agreement/class marker",NA,NA,NA,"mixed",7
+"8","Basque","basq1248",NA,0,43,-3,"Productive full and partial reduplication","Inflectional optative absent",NA,"government",NA,NA,0,"S=P≠Atr",NA
+"9","Belhariya","belh1239","Kiranti",0,26.9666666667,87.3,NA,NA,NA,"mixed",NA,"flexible-adjacent",2,"S=P≠Atr",10
+"10","Brahui","brah1256","North Dravidian",0,28.5,67,NA,"Inflectional optative absent",NA,"government",NA,NA,0,"S=Atr≠P",NA
+"11","Bukiyip","buki1249","Kombio",0,-3.46666666667,143.166666667,"Productive full and partial reduplication","Inflectional optative absent",NA,"mixed",NA,NA,0,"S=Atr=P",NA
+"12","Bulgarian","bulg1262","Balto-Slavic",0,42.5,25,NA,"Inflectional optative absent","Number","agreement/class marker","OK",NA,NA,"mixed",9
+"13","Burmese","nucl1310","Lolo-Burmese",0,21,96,"Full reduplication only","Inflectional optative absent",NA,"government",NA,NA,NA,"S=Atr≠P",4
+"14","Burushaski","buru1296",NA,0,36.5,74.5,NA,"Inflectional optative absent",NA,"government",NA,"flexible-adjacent",0,NA,NA
+"15","Central Aymara","cent2142",NA,0,-17,-69,"Productive full and partial reduplication","Inflectional optative present",NA,"mixed",NA,NA,0,"S=Atr≠P",NA
+"16","Central Moroccan Berber","cent2194",NA,0,33,-5,"Productive full and partial reduplication","Inflectional optative absent",NA,"construct state",NA,NA,0,NA,7
+"17","Chamorro","cham1312","Malayo-Polynesian",0,13.45,144.75,"Productive full and partial reduplication","Inflectional optative absent",NA,"construct state",NA,NA,3,NA,6
+"18","Chechen","chec1245","Nakh",0,43.25,45.8333333333,NA,"Inflectional optative present",NA,"government",NA,"flexible-relational",0,"mixed",NA
+"19","Chichimeca-Jonaz","chic1272","Pamean",0,21.6666666667,-100.5,NA,NA,NA,"agreement/class marker",NA,NA,0,"S=Atr=P",5
+"20","Chukchi","chuk1273","Chukotkan",0,67,-173,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=P≠Atr",6
+"21","Chuvash","chuv1255","Bulghar (aka Oghur)",0,55.5,47.5,NA,"Inflectional optative absent",NA,NA,"OK",NA,0,"S=Atr≠P",NA
+"22","Dyirbal","dyir1250","Dyirbalic",0,-17.8333333333,145.583333333,"Productive full and partial reduplication",NA,NA,"government",NA,"fixed:post-main",0,"S=Atr≠P",NA
+"23","Eastern Armenian","nucl1235","Greek-Armenian",0,40,45,"Full reduplication only","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",4
+"24","Eastern Oromo","east2652","Eastern Cushitic",0,9,42,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",6
+"25","Egyptian Arabic","egyp1253","West Semitic",0,30,31,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"mixed",NA
+"26","English","stan1293","Germanic",0,52,0,"No productive reduplication","Inflectional optative absent",NA,"government",NA,"flexible-adjacent",0,NA,2
+"27","Epena","epen1239",NA,0,3,-77,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=P≠Atr",6
+"28","Estonian","esto1258","Finno-Ugric",0,59,26,NA,"Inflectional optative absent","Number","agreement/class marker","OK",NA,NA,NA,7
+"29","Even","even1260","Northern Tungusic",0,68,130,NA,"Inflectional optative absent","Number","agreement/class marker",NA,NA,NA,"S=Atr≠P",NA
+"30","Evenki","even1259","Northern Tungusic",0,56,125,"No productive reduplication","Inflectional optative present",NA,"mixed",NA,NA,NA,"S=Atr≠P",7
+"31","Ewe","ewee1241","Gbe",0,6.33333333333,0.416666666667,"Productive full and partial reduplication","Inflectional optative absent",NA,"government",NA,NA,0,"mixed",NA
+"32","Faroese","faro1244","Germanic",0,62,-7,NA,NA,"Number","agreement/class marker","OK",NA,NA,NA,2
+"33","Fijian","fiji1243","Malayo-Polynesian",0,-17.8333333333,178,"Full reduplication only","Inflectional optative absent",NA,"government",NA,NA,0,NA,7
+"34","Finnish","finn1318","Finno-Ugric",0,62,25,"No productive reduplication","Inflectional optative absent","Number","agreement/class marker","OK",NA,0,"S=Atr≠P",5
+"35","French","stan1290","Italic-Celtic",0,48,2,"No productive reduplication","Inflectional optative absent","Number","mixed","OK",NA,0,"S=Atr=P",5
+"36","Fur","furr1244",NA,0,13.5,25,NA,"Inflectional optative absent",NA,"government",NA,NA,0,NA,4
+"37","Georgian","nucl1302","Georgian-Zan",0,42,44,"Productive full and partial reduplication","Inflectional optative present",NA,"government",NA,NA,0,NA,7
+"38","German","stan1295","Germanic",0,52.5,13.3333333333,NA,NA,"Number","construct state","OK","flexible-relational",0,"mixed",2
+"39","Godoberi","ghod1238","Daghestanian",0,42.6666666667,46.0833333333,NA,"Inflectional optative present","Gender","agreement/class marker","OK",NA,NA,"S=Atr=P",6
+"40","Gooniyandi","goon1238",NA,0,-18.3333333333,126.333333333,"Productive full and partial reduplication","Inflectional optative absent",NA,"government",NA,NA,0,"S=P≠Atr",6
+"41","Halh Mongolian","halh1238",NA,0,47,105,"Productive full and partial reduplication","Inflectional optative present",NA,"government",NA,NA,0,"S=Atr≠P",4
+"42","Hausa","haus1257","West Chadic",0,12,7,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"43","Hindi","hind1269","Indo-Iranian",0,25,77,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",2
+"44","Hixkaryána","hixk1239",NA,0,-1,-59,"No productive reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"45","Hokkaido Ainu","ainu1240",NA,0,43,143,"Full reduplication only","Inflectional optative absent",NA,"construct state",NA,NA,2,"S=Atr=P",6
+"46","Hungarian","hung1274","Finno-Ugric",0,47,20,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",6
+"47","Hunzib","hunz1247","Daghestanian",0,42.1666666667,46.25,"Productive full and partial reduplication","Inflectional optative present",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"48","Icelandic","icel1247","Germanic",0,65,-17,NA,"Inflectional optative absent","Number","agreement/class marker","OK",NA,NA,"S=Atr≠P",3
+"49","Imbabura Highland Quichua","imba1240",NA,0,0.333333333333,-78,"Full reduplication only","Inflectional optative absent",NA,"government",NA,"flexible-adjacent",NA,"S=Atr≠P",NA
+"50","Imonda","imon1245","Waris",0,-3.33333333333,141.166666667,NA,"Inflectional optative absent",NA,"mixed",NA,NA,0,"S=Atr≠P",10
+"51","Ingush","ingu1240","Nakh",0,43.1666666667,45.0833333333,NA,"Inflectional optative present",NA,"government",NA,NA,0,NA,11
+"52","Iraqw","iraq1241","Southern Cushitic",0,-4,35.5,NA,"Inflectional optative absent","Number",NA,NA,NA,0,"S=Atr=P",NA
+"53","Japanese","nucl1643",NA,0,37,140,"Full reduplication only","Inflectional optative absent",NA,"government",NA,NA,NA,"S=Atr≠P",5
+"54","Kannada","nucl1305","South Dravidian",0,14,76,"Productive full and partial reduplication","Inflectional optative absent",NA,"government",NA,NA,0,"S=Atr≠P",NA
+"55","Karok","karo1304",NA,0,41.6666666667,-123,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"56","Kayardild","kaya1319","Southern Tangkic",0,-17.05,139.5,"Productive full and partial reduplication","Inflectional optative absent",NA,"mixed",NA,NA,0,NA,4
+"57","Ket","kett1243",NA,0,64,87,NA,"Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"58","Koasati","koas1236",NA,0,34.8333333333,-85.1666666667,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr≠P",NA
+"59","Korean","kore1280",NA,0,37.5,128,"Productive full and partial reduplication","Inflectional optative absent",NA,"government","OK",NA,26,"S=Atr≠P",NA
+"60","Koyra Chiini Songhay","koyr1240",NA,0,17,-3,NA,NA,NA,"government",NA,NA,0,"S=Atr=P",4
+"61","Kutenai","kute1249",NA,0,49.5,-116,"No productive reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"62","Lakota","lako1247",NA,0,43.8333333333,-101.833333333,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"63","Lango (Uganda)","lang1324","Western Nilotic",0,2.16666666667,33,"No productive reduplication","Inflectional optative absent",NA,"mixed",NA,NA,0,"mixed",6
+"64","Latvian","latv1249","Balto-Slavic",0,57,24,NA,"Inflectional optative absent","Number","construct state","OK",NA,NA,"S=Atr≠P",5
+"65","Lavukaleve","lavu1241",NA,0,-9.08333333333,159.2,"Productive full and partial reduplication","Inflectional optative absent","Person","agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"66","Lezgian","lezg1247","Daghestanian",0,41.6666666667,47.8333333333,"No productive reduplication","Inflectional optative present",NA,"government",NA,NA,0,"S=P≠Atr",NA
+"67","Mandarin Chinese","mand1415","Sinitic",0,25,102.75,NA,NA,NA,NA,"OK",NA,50,"S=Atr=P",2
+"68","Mangarrayi","mang1381",NA,0,-14.6666666667,133.5,"Productive full and partial reduplication","Inflectional optative absent",NA,"mixed",NA,NA,0,"mixed",NA
+"69","Mapudungun","mapu1245",NA,0,-38,-72,NA,"Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"70","Martuthunira","mart1255","Southwestern Pama-Nyungan",0,-20.8333333333,116.5,"Full reduplication only","Inflectional optative absent",NA,"mixed",NA,NA,0,"S=Atr≠P",3
+"71","Maybrat-Karon","maib1239","South Bird’s Head",0,-1.33333333333,132.5,"Productive full and partial reduplication","Inflectional optative absent",NA,"government","ungrammatical",NA,8,"S=Atr=P",1
+"72","Modern Greek","mode1248","Greek-Armenian",0,39,22,"No productive reduplication","Inflectional optative absent","Number","agreement/class marker","OK",NA,NA,"mixed",5
+"73","Modern Ossetic","osse1243","Indo-Iranian",0,43,44,NA,"Inflectional optative absent",NA,"government",NA,NA,0,"S=Atr=P",7
+"74","Norwegian Bokmål","norw1259","Germanic",0,61,8,NA,"Inflectional optative absent","Number","mixed","OK",NA,NA,NA,NA
+"75","Oneida","onei1249","Northern Iroquoian",0,43,-75.6666666667,"No productive reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,NA,8
+"76","Paraguayan Guaraní","para1311","Tupi-Guaraní",0,-26,-56,NA,"Inflectional optative present",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"77","Pipil","pipi1250","Southern Uto-Aztecan",0,13.8333333333,-89.5833333333,"Productive full and partial reduplication","Inflectional optative absent",NA,"mixed",NA,NA,0,"S=Atr=P",NA
+"78","Plains Cree","plai1258","Algonquian",0,54,-110,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",NA
+"79","Popti'","popt1235","Greater Kanjobalan",0,15.6666666667,-91.6666666667,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,NA,"S=Atr=P",5
+"80","Purepecha","pure1242",NA,0,19.5,-101.666666667,NA,"Inflectional optative absent",NA,"mixed",NA,NA,10,"mixed",NA
+"81","Rama","rama1270","Rama",0,11.75,-83.75,NA,"Inflectional optative absent",NA,"government",NA,NA,NA,"mixed",3
+"82","Romanian","roma1327","Italic-Celtic",0,46,25,NA,NA,"Role","agreement/class marker","OK",NA,NA,NA,6
+"83","Russian","russ1263","Balto-Slavic",0,56,38,"No productive reduplication","Inflectional optative absent",NA,"government",NA,"flexible-adjacent",0,"S=Atr≠P",6
+"84","Sanumá","sanu1240",NA,0,4.5,-64.6666666667,NA,"Inflectional optative absent",NA,"government",NA,NA,0,"S=P≠Atr",5
+"85","Slovenian","slov1268","Balto-Slavic",0,46,15,NA,"Inflectional optative absent","Number","agreement/class marker","OK",NA,NA,NA,8
+"86","Somali","soma1255","Eastern Cushitic",0,3,45,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",3
+"87","Southern Sierra Miwok","sout2985","Utian",0,37.5,-120,NA,"Inflectional optative absent",NA,"mixed",NA,NA,0,"S=Atr≠P",8
+"88","Spanish","stan1288","Italic-Celtic",0,40,-4,"No productive reduplication","Inflectional optative absent","Number","agreement/class marker",NA,NA,0,"S=Atr≠P",5
+"89","Supyire Senoufo","supy1237","Northern Senufo",0,11.5,-5.58333333333,NA,"Inflectional optative absent",NA,"construct state",NA,"fixed:post-main",0,"S=Atr=P",3
+"90","Swahili","swah1253","Bantoid",0,-6.5,39,"Productive full and partial reduplication","Inflectional optative absent","Number","agreement/class marker",NA,"fixed:post-main",NA,"S=Atr=P",NA
+"91","Swedish","swed1254","Germanic",0,60,15,NA,"Inflectional optative absent","Number","mixed","OK",NA,NA,NA,2
+"92","Thai","thai1261",NA,0,16,101,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,20,"S=Atr=P",2
+"93","Tiwi","tiwi1244",NA,0,-11.5,131,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr=P",5
+"94","Turkish","nucl1301","Common Turkic",0,39,35,"Productive full and partial reduplication","Inflectional optative absent",NA,"mixed",NA,"fixed:pre-main",NA,"S=Atr≠P",7
+"95","Tuvinian","tuvi1240","Common Turkic",0,52,95,"Productive full and partial reduplication","Inflectional optative absent",NA,NA,NA,NA,0,"S=Atr≠P",5
+"96","Udihe","udih1248","Central Tungusic",0,47.6666666667,136.25,NA,"Inflectional optative absent",NA,"agreement/class marker",NA,NA,NA,"S=Atr≠P",4
+"97","Warao","wara1303",NA,0,9.33333333333,-61.6666666667,NA,"Inflectional optative absent",NA,"government",NA,NA,0,"S=Atr=P",5
+"98","Wari'","wari1268",NA,0,-11.3333333333,-65,"Productive full and partial reduplication","Inflectional optative absent",NA,"agreement/class marker",NA,NA,0,"S=Atr=P",4
+"99","Yoruba","yoru1245","Yoruboid",0,8,4.33333333333,"Productive full and partial reduplication","Inflectional optative absent",NA,"construct state",NA,NA,0,"mixed",5
+"100",NA,"tosk1239","Albanian",0,NA,NA,NA,NA,"Number","mixed","OK",NA,0,"mixed",6

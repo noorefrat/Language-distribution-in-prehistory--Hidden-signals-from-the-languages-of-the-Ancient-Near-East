@@ -1,0 +1,28 @@
+﻿old,new
+Number,Number
+Gender,Gender
+"Gender, Number, State, Case",Gender
+"Gender, Number, State, Case",Number
+"Gender, Number, State, Case",State
+"Gender, Number, State, Case",Case
+"Gender,Number,Definiteness",Gender
+"Gender,Number,Definiteness",Number
+"Gender,Number,Definiteness",Definiteness
+"Gender,Number",Gender
+"Gender,Number",Number
+"Case, Number, Gender",Number
+"Case, Number, Gender",Gender
+"Case, Number, Gender",Case
+"Gender,Number,State",Gender
+"Gender,Number,State",Number
+"Gender,Number,State",State
+"Gender,Number,Role",Gender
+"Gender,Number,Role",Number
+"Gender,Number,Role",Role
+"Number,Person,Role",Number
+"Number,Person,Role",Person
+"Number,Person,Role",Role
+none,none
+"Gender,Number,Person",Gender
+"Gender,Number,Person",Number
+"Gender,Number,Person",Person

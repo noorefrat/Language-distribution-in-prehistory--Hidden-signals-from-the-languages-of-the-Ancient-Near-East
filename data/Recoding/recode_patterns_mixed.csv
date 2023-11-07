@@ -1,0 +1,115 @@
+﻿wals.fname,new.fname,wals.levels,new.levels,recode.pattern,original.author,Feature.ID,Feature_Code
+106A Reciprocal Constructions,Reciprocal.Presence,"1 No reciprocals
+2 Distinct from reflexive
+3 Mixed
+4 Identical to reflexive","FALSE
+TRUE",1-2/3/4,Elena Maslova and Vladimir Nedjalkov,106,MASREC2
+106A Reciprocal Constructions,ReciprocalReflexive.Identical,"1 No reciprocals
+2 Distinct from reflexive
+3 Mixed
+4 Identical to reflexive","FALSE
+TRUE",1/2/3-4,Elena Maslova and Vladimir Nedjalkov,106,MASREC2
+106A Reciprocal Constructions,ReciprocalReflexive.Distinct,"1 No reciprocals
+2 Distinct from reflexive
+3 Mixed
+4 Identical to reflexive","FALSE
+TRUE",1/3/4-2,Elena Maslova and Vladimir Nedjalkov,106,MASREC2
+93A Position of Interrogative Phrases in Content Questions,ContentQInitial,"1 Initial interrogative phrase
+2 Not initial interrogative phrase
+3 Mixed","TRUE
+FALSE",1/3-2,Matthew S. Dryer,93,DRYCOQ0
+93A Position of Interrogative Phrases in Content Questions,ContentQNonInitial,"1 Initial interrogative phrase
+2 Not initial interrogative phrase
+3 Mixed","TRUE
+FALSE",2/3-1,Matthew S. Dryer,93,DRYCOQ0
+89A Order of Numeral and Noun,NumNoun,"1 Numeral-Noun
+2 Noun-Numeral
+3 No dominant order
+4 Numeral only modifies verb","TRUE
+FALSE",1/3-2,Matthew S. Dryer,89,DRYNUM0
+89A Order of Numeral and Noun,NounNum,"1 Numeral-Noun
+2 Noun-Numeral
+3 No dominant order
+4 Numeral only modifies verb","TRUE
+FALSE",2/3-1,Matthew S. Dryer,89,DRYNUM0
+91A Order of Degree Word and Adjective,DegWordAdj,"1 Degree word-Adjective
+2 Adjective-Degree word
+3 No dominant order","TRUE
+FALSE",1/3-2,Matthew S. Dryer,91,DRYDEG0
+91A Order of Degree Word and Adjective,AdjDegWord,"1 Degree word-Adjective
+2 Adjective-Degree word
+3 No dominant order","TRUE
+FALSE",2/3-1,Matthew S. Dryer,91,DRYDEG0
+86A Order of Genitive and Noun,GenN,"1 Genitive-Noun
+2 Noun-Genitive
+3 No dominant order","TRUE
+FALSE",1/3-2,Matthew S. Dryer,86,DRYGEN0
+86A Order of Genitive and Noun,NGen,"1 Genitive-Noun
+2 Noun-Genitive
+3 No dominant order","TRUE
+FALSE",2/3-1,Matthew S. Dryer,86,DRYGEN0
+87A Order of Adjective and Noun,AdjNoun,"1 Adjective-Noun
+2 Noun-Adjective
+3 No dominant order
+4 Only internally-headed relative clauses","TRUE
+FALSE",1/3-2/4,Matthew S. Dryer,87,DRYADJ0
+87A Order of Adjective and Noun,NounAdj,"1 Adjective-Noun
+2 Noun-Adjective
+3 No dominant order
+4 Only internally-headed relative clauses","TRUE
+FALSE",2/3-1/4,Matthew S. Dryer,87,DRYADJ0
+57A Position of Pronominal Possessive Affixes,PossAffixes.Presence,"1 Possessive prefixes
+2 Possessive suffixes
+3 Prefixes and suffixes
+4 No possessive affixes","FALSE
+TRUE",1/2/3-4,Matthew S. Dryer,57,DRYPOS2
+57A Position of Pronominal Possessive Affixes,PossPrefix,"1 Possessive prefixes
+2 Possessive suffixes
+3 Prefixes and suffixes
+4 No possessive affixes","TRUE
+FALSE",1/3-2,Matthew S. Dryer,57,DRYPOS0
+57A Position of Pronominal Possessive Affixes,PossSuffix,"1 Possessive prefixes
+2 Possessive suffixes
+3 Prefixes and suffixes
+4 No possessive affixes","TRUE
+FALSE",2/3-1,Matthew S. Dryer,57,DRYPOS0
+98A Alignment of Case Marking of Full Noun Phrases,,NA,NA,NA,NA,NA,NA
+99A Alignment of Case Marking of Pronouns,,NA,NA,NA,NA,NA,NA
+52A Comitatives and Instrumentals,,NA,NA,NA,NA,NA,NA
+63A Noun Phrase Conjunction,,NA,NA,NA,NA,NA,NA
+64A Nominal and Verbal Conjunction,,NA,NA,NA,NA,NA,NA
+37A Definite Articles,,NA,NA,NA,NA,NA,NA
+38A Indefinite Articles,,NA,NA,NA,NA,NA,NA
+101A Expression of Pronominal Subjects,,NA,NA,NA,NA,NA,NA
+46A Indefinite Pronouns,,NA,NA,NA,NA,NA,NA
+43A Third Person Pronouns and Demonstratives,,NA,NA,NA,NA,NA,NA
+41A Distance Contrasts in Demonstratives,,NA,NA,NA,NA,NA,NA
+42A Pronominal and Adnominal Demonstratives,,NA,NA,NA,NA,NA,NA
+47A Intensifiers and Reflexive Pronouns,,NA,NA,NA,NA,NA,NA
+44A Gender Distinctions in Independent Personal Pronouns,,NA,NA,NA,NA,NA,NA
+32A Systems of Gender Assignment,,NA,NA,NA,NA,NA,NA
+30A Number of Genders,,NA,NA,NA,NA,NA,NA
+112A Negative Morphemes,,NA,NA,NA,NA,NA,NA
+33A Coding of Nominal Plurality,,NA,NA,NA,NA,NA,NA
+53A Ordinal Numerals,,NA,NA,NA,NA,NA,NA
+54A Distributive Numerals,,NA,NA,NA,NA,NA,NA
+85A Order of Adposition and Noun Phrase,,NA,NA,NA,NA,NA,NA
+88A Order of Demonstrative and Noun,,NA,NA,NA,NA,NA,NA
+143A Order of Negative Morpheme and Verb,,NA,NA,NA,NA,NA,NA
+84A Order of Object Oblique and Verb,,NA,NA,NA,NA,NA,NA
+90A Order of Relative Clause and Noun,,NA,NA,NA,NA,NA,NA
+107A Passive Constructions,,NA,NA,NA,NA,NA,NA
+73A The Optative,,NA,NA,NA,NA,NA,NA
+71A The Prohibitive,,NA,NA,NA,NA,NA,NA
+70A The Morphological Imperative,,NA,NA,NA,NA,NA,NA
+48A Person Marking on Adpositions,,NA,NA,NA,NA,NA,NA
+92A Position of Polar Question Particles,,NA,NA,NA,NA,NA,NA
+59A Possessive Classification,,NA,NA,NA,NA,NA,NA
+24A Locus of Marking in Possessive Noun Phrases,,NA,NA,NA,NA,NA,NA
+27A Reduplication,,NA,NA,NA,NA,NA,NA
+67A The Future Tense,,NA,NA,NA,NA,NA,NA
+66A The Past Tense,,NA,NA,NA,NA,NA,NA
+65A Perfective/Imperfective Aspect,,NA,NA,NA,NA,NA,NA
+102A Verbal Person Marking,,NA,NA,NA,NA,NA,NA
+81A Order of Subject Object and Verb,,NA,NA,NA,NA,NA,NA
+22A Inflectional Synthesis of the Verb,,NA,NA,NA,NA,NA,NA
