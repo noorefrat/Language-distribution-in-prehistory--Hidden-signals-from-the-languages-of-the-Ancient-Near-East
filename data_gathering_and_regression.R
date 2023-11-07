@@ -1,13 +1,5 @@
----
-  title: "SI"
-output:
-  pdf_document: default
-html_document: default
----
-  
-  # Supplementary Materials
-  
-  ## Packages
+
+## Packages
 library(brms)
 library(dplyr)
 library(tidyverse)
@@ -295,33 +287,37 @@ autotyp_recoded %>% select(language, glottocode, family, area, latitude, longitu
 
 ##combine recoded WALS with recoded AUTOTYP
 
-recoded_data<- merge(wals_recoded, autotyp_recoded, by= c("language"))
-#meta<- autotyp_recoded[, c("language", "glottocode", "family", "area", "longitude", "latitude")]
-#recoded_data<- merge(meta, recoded_data, by= c("language"))
+recoded_data<- merge(wals_recoded, autotyp_recoded, by= c("language")) %>%
+  relocate(language, glottocode, family, area, longitude, latitude)
 #write.csv(recoded_data, file = "recoded.anea.uni.not.clean.csv")
 
 
-## Data import and clean up
-#clean up data from special characters so it can pass through the regression function
-data<-recoded_data
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., ",", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "'", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., ":", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "-", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "/", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "\\+", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "\\[", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "\\]", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "\\(", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "\\)", "")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "=", "v")))
-data <- data %>% mutate_at(vars(Reciprocal.Presence:VerbInflectionMaxCategoryCount), list(~ stringr::str_replace_all(., "≠", "x")))
-
 #change feature names to short names
-colnames(data) <- c("language", "glottocode","family", "area", "longitude", "latitude", "Rec.P", "RecRef.I", "RecRef.D", "ContQInitial",	"ContQNonInitial", "NumNoun", "NounNum", "DegWAdj",	"AdjDegW", "GenN",	"NGen", "AdjN",	"NAdj",	"PossAff.P",	"PossPre",	"PossSuff",	"ComInst",	"NPconj",	"NVconj",	"DefArt",	"IndefArt",	"PronomS",	"IndefPron",	"PronDem",	"DemDis",	"PronAdnDem",	"IntRef",	"GenPron",	"Gender",	"Gender.n",	"NegMorph",	"NPlural",	"OrdNum",	"DistNum", "AdpN",	"DemN",	"NegV",	"OXV",	"RelN",	"Passive",	"Optative",	"Prohibitive",	"Imperative",	"AdpPM",	"PolarQ",	"PossClass",	"PossLocus",	"Reduplication",	"Future",	"Past",	"Aspect",	"Vper",	"SOV",	"Head.driven.agr",	"Construct.state",	"Juxtaposition",	"Governed",	"Mod.headed.poss.agr",	"Linker",	"Incorporation",	"Dep.driven.agr",	"Pronominal.agr",	"Anti.const.state.agr",	"Mod.governed.adp", "External.driven.agr",	"External.Poss",	"Bare.noun",	"Nominalizer",	"Agr.Number",	"Agr.Gender",	"Agr.Case","Agr.Def",	"Agr.State", "Agr.none",	"Agr.Person",	"Agr.Role",	"NPHeadlessness",	"ClausePosition",	"NumClass.n",	"Alignment", "VInflCat")
+data<- recoded_data %>% rename(Rec.P = Reciprocal.Presence, RecRef.I = ReciprocalReflexive.Identical, RecRef.D = ReciprocalReflexive.Distinct, PossAff.P = PossAffixes.Presence, PossPre = PossPrefix, PossSuff = PossSuffix,
+                ComInst = "52A Comitatives and Instrumentals", NPconj = "63A Noun Phrase Conjunction", DefArt = "37A Definite Articles", IndefArt = "38A Indefinite Articles", PronomS = "101A Expression of Pronominal Subjects", IndefPron = "46A Indefinite Pronouns",
+                PronDem = "43A Third Person Pronouns and Demonstratives", DemDis = "41A Distance Contrasts in Demonstratives", PronAdnDem = "42A Pronominal and Adnominal Demonstratives", IntRef = "47A Intensifiers and Reflexive Pronouns", GenPron = "44A Gender Distinctions in Independent Personal Pronouns",
+                Gender = "32A Systems of Gender Assignment", "Gender.n" = "30A Number of Genders", NegMorph = "112A Negative Morphemes", NPlural = "33A Coding of Nominal Plurality", OrdNum = "53A Ordinal Numerals", DistNum = "54A Distributive Numerals",
+                AdpN = "85A Order of Adposition and Noun Phrase", DemN = "88A Order of Demonstrative and Noun", NegV = "143A Order of Negative Morpheme and Verb", OXV = "84A Order of Object Oblique and Verb", NVconj = "64A Nominal and Verbal Conjunction",
+                RelN = "90A Order of Relative Clause and Noun", Passive = "107A Passive Constructions", Optative= "73A The Optative", Prohibitive = "71A The Prohibitive", Imperative = "70A The Morphological Imperative", AdpPM = "48A Person Marking on Adpositions",
+                PolarQ = "92A Position of Polar Question Particles", PossClass = "59A Possessive Classification", PossLocus = "24A Locus of Marking in Possessive Noun Phrases", Reduplication = "27A Reduplication", Future = "67A The Future Tense", Past = "66A The Past Tense",
+                Aspect = "65A Perfective/Imperfective Aspect", Vper = "102A Verbal Person Marking", SOV = "81A Order of Subject Object and Verb", Agr.Gender = Gender, Alignment = DominantAlignment2ForCase, VInflCat = VerbInflectionMaxCategoryCount, NumClass.n = NumeralClassifiersCount,
+                NPHeadlessness = NPStructureHeadlessness, Agr.Number = Number, Agr.Case = Case, Agr.Def = Definiteness, Agr.State = State, Agr.none = none, Cons.state = "Construct state", Head.driven.agr = "Head-driven.agr", agr.class = "agr./class")
+
+#clean up data from special characters so it can pass through the regression function
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., ",", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "'", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., ":", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "-", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "/", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "\\+", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "\\[", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "\\]", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "\\(", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "\\)", "")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "=", "v")))
+data <- data %>% mutate_at(vars(ComInst:VInflCat), list(~ stringr::str_replace_all(., "≠", "x")))
 
 #write.csv(data, file = "recoded.anea.semitic.uni.clean.csv")
-
 
 ## Separate back into three datasets, and create the dataset for the Regression
 anea<- data %>% filter (area %in% "anea")
@@ -338,8 +334,8 @@ semitic[semitic == "Modern HebrewS"] <- "Modern Hebrew"
 #write.csv(universal, file = "recoded.universal.clean.csv")
 
 # create dataset for regression analysis
-data<- rbind(anea, universal)
-#write.csv(data, file = "regression.data.csv")
+reg_data<- rbind(anea, universal)
+#write.csv(reg_data, file = "reg_data.csv")
 
 
 
@@ -348,9 +344,9 @@ data<- rbind(anea, universal)
 #While the frequentist framework only allows for the rejection of a null effect, it cannot quantify the evidence for a null effect. Because we are interested both in the evidence for the influence of area on morphology as well as the absence of influence of area on morphology, we fit the regression models in a Bayesian framework. The models estimate the probability distributions of the effects of the area on morphology. In order to do so, we used the R package brms (Bürkner 2018). 
 #We used a normal distribution prior. For the group-level (“random”) effects we use a student_t (3,0,2.5) prior.  
 
-#data<- read.csv("data/Processed_data/regression.data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
+#reg_data<- read.csv("data/Processed_data/reg_data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
-variables <- colnames(data)[7:87]
+variables <- colnames(reg_data)[7:76]
 results.list <- list()
 ex.prior <- c(prior_string("normal(0,1)", class="b"))
 
@@ -364,14 +360,14 @@ for(u in 1:length(variables)){
     formula= brmsformula,
     family= categorical(link="logit"),
     prior= ex.prior, 
-    data= data,
+    data= reg_data,
     iter = 5000,
     cores=4,
     control = list(adapt_delta = 0.9999999))
   results.list[[u]] <- fit
 }
 
-saveRDS(results.list, 'regression_results_prior_1.rds')
+saveRDS(results.list, 'reg_results.rds')
 
 
 #The results are reported in the log odds - when the area coefficient is centered around 0 it indicates no influence of the area on the morphology (null-effect). When the area coefficient is positive, that means that the variable in question is more likely in the Ancient Near East than elsewhere, and when it is negative, the variable is more rare in the Ancient Near East compared to the universal distribution. Therefore, the density curves show how probable each value is for each morphological feature in the Ancient Near East compared to the universal distribution.  
@@ -396,13 +392,13 @@ saveRDS(results.list, 'regression_results_prior_1.rds')
 #the code collects all the posterior draws from the area coefficient,
 #i.e. indirectly quantifying the probability to observe the associated 
 #feature in the area. The coefficient column says which variable and category it is.
-data<- read.csv("data/Processed_data/regression.data.csv")
-results<- readRDS("regression_results_prior_1.rds")
+data<- read.csv("data/Processed_data/reg_results.csv")
+results<- readRDS("reg_results.rds")
 results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
-data <-  as.data.frame(data)
+data <-  as.data.frame(reg_data)
 
-for(u in 7:87){ #loop through all the columns with variables analyzed
+for(u in 7:76){ #loop through all the columns with variables analyzed
   print(u)
   fit <- results[[u -6]] #choose the corresponding fitted model in the results list
   categories <-gsub(' ','', sort(unique(data[,u]))[-1]) #determine the categories of a variable,
