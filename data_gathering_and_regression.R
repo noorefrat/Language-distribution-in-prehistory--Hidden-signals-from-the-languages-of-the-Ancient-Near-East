@@ -287,7 +287,7 @@ autotyp_recoded %>% select(language, glottocode, family, area, latitude, longitu
 
 ##combine recoded WALS with recoded AUTOTYP
 
-recoded_data<- merge(wals_recoded, autotyp_recoded, by= c("language")) %>%
+recoded_data<- merge(wals_recoded, autotyp_recoded, by= c("language","glottocode", "family", "area", "longitude", "latitude")) %>%
   relocate(language, glottocode, family, area, longitude, latitude)
 #write.csv(recoded_data, file = "recoded.anea.uni.not.clean.csv")
 
