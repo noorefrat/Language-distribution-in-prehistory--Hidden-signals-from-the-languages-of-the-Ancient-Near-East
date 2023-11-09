@@ -352,7 +352,7 @@ ex.prior <- c(prior_string("normal(0,1)", class="b"))
 
 options(brms.backend = "cmdstanr")
 
-#regression model
+#regression model, runs on brms version 2.19.0
 for(u in 1:length(variables)){
   print(u)
   brmsformula <- as.formula(paste(variables[u], '~ area + (1|family)'))
@@ -392,7 +392,7 @@ saveRDS(results.list, 'reg_results.rds')
 #the code collects all the posterior draws from the area coefficient,
 #i.e. indirectly quantifying the probability to observe the associated 
 #feature in the area. The coefficient column says which variable and category it is.
-data<- read.csv("data/Processed_data/reg_results.csv")
+data<- read.csv("data/Processed_data/regression.data.csv")
 results<- readRDS("reg_results.rds")
 results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
