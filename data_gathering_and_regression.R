@@ -16,7 +16,6 @@ library(knitr)
 library(kableExtra)
 library(bayesplot)
 library(ggpubr)
-library(plotrix)
 library(testthat)
 library(cmdstanr)
 
@@ -335,7 +334,7 @@ semitic[semitic == "Modern HebrewS"] <- "Modern Hebrew"
 
 # create dataset for regression analysis
 reg_data<- rbind(anea, universal)
-#write.csv(reg_data, file = "reg_data.csv")
+#write.csv(reg_data, file = "data/Processed_data/reg_data.csv")
 
 
 
@@ -392,8 +391,8 @@ saveRDS(results.list, 'reg_results.rds')
 #the code collects all the posterior draws from the area coefficient,
 #i.e. indirectly quantifying the probability to observe the associated 
 #feature in the area. The coefficient column says which variable and category it is.
-data<- read.csv("data/Processed_data/regression.data.csv")
-results<- readRDS("reg_results.rds")
+#data<- read.csv("data/Processed_data/reg_data.csv")
+#results<- readRDS("reg_results.rds")
 results<- results.list
 area_draws <- data.frame(post_draw = NA, coefficient = NA) #a vector which is to be expanded with the draws
 data <-  as.data.frame(reg_data)
@@ -457,7 +456,7 @@ regression_plot <- ggplot(area_draws_order,aes(y=coefficient)) +
         panel.grid.major = element_blank(),
         legend.title = element_blank())
 
-ggsave("anea_regression.pdf",
+ggsave("regression.pdf",
        plot = regression_plot,
        width = 15,
        height = 20,
