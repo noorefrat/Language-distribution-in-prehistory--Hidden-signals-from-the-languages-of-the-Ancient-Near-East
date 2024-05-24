@@ -343,7 +343,7 @@ reg_data<- rbind(anea, universal)
 #While the frequentist framework only allows for the rejection of a null effect, it cannot quantify the evidence for a null effect. Because we are interested both in the evidence for the influence of area on morphology as well as the absence of influence of area on morphology, we fit the regression models in a Bayesian framework. The models estimate the probability distributions of the effects of the area on morphology. In order to do so, we used the R package brms (Bürkner 2018). 
 #We used a normal distribution prior. For the group-level (“random”) effects we use a student_t (3,0,2.5) prior.  
 
-#reg_data<- read.csv("data/Processed_data/reg_data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
+reg_data<- read.csv("data/Processed_data/reg_data.csv", encoding="UTF-8", na.strings=c(""," ","NA","\n"))
 
 variables <- colnames(reg_data)[7:76]
 results.list <- list()
@@ -442,9 +442,9 @@ regression_plot <- ggplot(area_draws_order,aes(y=coefficient)) +
                 .width = c(0.5, .90), size=0.8) + 
   scale_color_brewer(name="Credible Interval", palette = 1) +
   geom_vline(xintercept = 0) + theme_bw() +
-  labs(y= "Feature states ordered by mean regression coefficient", x= "Posterior")+
+  labs(y= "Feature states ordered by mean posterior log odds", x= "Posterior log odds")+
   theme(plot.title = element_text(size = 80,face = "bold"),
-        axis.text=element_text(size=2),
+        axis.text=element_text(size=8),
         #axis.title.y=element_blank(),
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank(),
